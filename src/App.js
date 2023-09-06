@@ -17,9 +17,11 @@ export const PetContext = createContext();
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [loginStatus, setLoginStatus] = useState(true);
+  const [loginStatus, setLoginStatus] = useState(false);
   const [name, setName] = useState("");
   const [productDetails, setProductDetails] = useState(ProductData);
+  const [productId, setProductId] = useState(17);
+  const [orderId, setOrderId] = useState(11);
   const [profile, setProfile] = useState([
     {
       id: "0",
@@ -32,7 +34,7 @@ function App() {
       id: 1,
       name: "John Doe",
       email: "john.doe@example.com",
-      password: "password123",
+      password: "1",
       orders: [
         {
           orderId: 1,
@@ -168,6 +170,11 @@ function App() {
     },
   ]);
 
+  const handlePrice = (price) => {
+    const formattedPrice = Number(price).toLocaleString("en-IN");
+    return "₹" + formattedPrice;
+  };
+
   const location = useLocation();
   const isDashboardRoute = location.pathname.startsWith("/dashboard");
 
@@ -185,6 +192,11 @@ function App() {
           setProductDetails,
           cart,
           setCart,
+          handlePrice,
+          productId,
+          setProductId,
+          orderId,
+          setOrderId,
         }}
       >
         {!isDashboardRoute && <Navbar />}
@@ -201,6 +213,7 @@ function App() {
           <Route path="/cat-food/:id" element={<Details />} />
           <Route path="/dashboard" element={<FixedAdmin />} />
           <Route path="/dashboard/users" element={<FixedAdmin />} />
+          <Route path="/dashboard/users/:id" element={<FixedAdmin />} />
           <Route path="/dashboard/products" element={<FixedAdmin />} />
           <Route path="/dashboard/products/:id" element={<FixedAdmin />} />
           <Route path="/dashboard/add-products" element={<FixedAdmin />} />

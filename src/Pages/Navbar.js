@@ -157,6 +157,7 @@ const Navbar = () => {
                 paddingTop: "50px",
                 zIndex: "-1",
               }}
+              className="search-output"
             >
               {filteredProducts.map((product) => (
                 <>

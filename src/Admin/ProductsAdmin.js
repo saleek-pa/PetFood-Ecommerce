@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductsAdmin() {
   const navigate = useNavigate();
-  const { productDetails, setProductDetails } = useContext(PetContext);
+  const { productDetails, setProductDetails, handlePrice } = useContext(PetContext);
 
   const [category, setCategory] = useState(productDetails);
   const [selectedOption, setSelectedOption] = useState("All");
@@ -65,11 +65,12 @@ export default function ProductsAdmin() {
                 </th>
                 <th>{product.name}</th>
                 <th>{product.description.slice(0, 60)}</th>
-                <th>₹{product.price}</th>
+                <th>{handlePrice(product.price)}</th>
                 <th>
                   <MDBBtn
                     className="me-1"
                     color="success"
+                    rounded
                     onClick={() =>
                       navigate(`/dashboard/products/${product.id}`)
                     }
@@ -81,6 +82,7 @@ export default function ProductsAdmin() {
                   <MDBBtn
                     className="me-1"
                     color="danger"
+                    rounded
                     onClick={() => handleDelete(product.id)}
                   >
                     <MDBIcon fas icon="trash" />

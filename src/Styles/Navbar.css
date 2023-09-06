@@ -102,6 +102,7 @@
   .greeting,
   .search-icon,
   .search-box,
+  .search-output,
   .search-box input {
     display: none;
   }

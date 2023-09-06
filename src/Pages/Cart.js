@@ -17,7 +17,8 @@ import "../Styles/Cart.css";
 
 export default function Cart() {
   const navigate = useNavigate();
-  const { cart, setCart, profile, setProfile, name } = useContext(PetContext);
+  const { cart, setCart, profile, setProfile, name, orderId, setOrderId } =
+    useContext(PetContext);
 
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -40,13 +41,18 @@ export default function Cart() {
 
   const handleCheckout = (e) => {
     e.preventDefault();
+
     if (cart.length !== 0) {
-      const newOrderItem = cart.map((item) => ({
-        orderId: cart.length,
+      const newOrderItem = cart.map((item, index) => ({
+        orderId: orderId + index + 1,
         product: item.name,
         quantity: item.quantity,
         price: item.price,
       }));
+      setOrderId(orderId + 1);
+      console.log(orderId);
+      console.log(newOrderItem);
+      console.log(newOrderItem.length);
 
       const updatedProfile = profile.map((user) => {
         if (user.name === name) {

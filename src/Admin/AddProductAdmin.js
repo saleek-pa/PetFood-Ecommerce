@@ -11,21 +11,24 @@ import {
 
 export default function AddProductAdmin() {
   const navigate = useNavigate();
-  const { productDetails, setProductDetails } = useContext(PetContext);
+  const { productDetails, setProductDetails, productId, setProductId } =
+    useContext(PetContext);
 
   const handleForm = (e) => {
     e.preventDefault();
+
     const newProduct = {
-      id: productDetails.length + 1,
+      id: productId,
       category: e.target.category.value,
       name: e.target.name.value,
       src: e.target.imageURL.value,
       description: e.target.description.value,
       price: e.target.price.value,
-      quanity: 1,
+      quantity: 1,
     };
     setProductDetails([...productDetails, newProduct]);
     navigate("/dashboard/products");
+    setProductId(productId + 1);
   };
 
   return (
@@ -97,6 +100,7 @@ export default function AddProductAdmin() {
               wrapperClass="mb-4"
               label="Price"
               name="price"
+              min={0}
               required
               type="number"
             />

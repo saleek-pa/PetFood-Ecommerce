@@ -8,6 +8,7 @@ import AddProductAdmin from "./AddProductAdmin";
 import EditProductAdmin from "./EditProductAdmin";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Styles/Admin.css";
+import UserDetailsAdmin from "./UserDetailsAdmin";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const isUsers = location.pathname.endsWith("/users");
   const isProducts = location.pathname.endsWith("/products");
   const isAddProducts = location.pathname.endsWith("add-products");
+  const isUserDetails = location.pathname.startsWith("/dashboard/users/");
   const isEditProducts = location.pathname.startsWith("/dashboard/products/");
 
   const { loginStatus, setLoginStatus, name } = useContext(PetContext);
@@ -67,10 +69,10 @@ export default function Dashboard() {
         <div className="content-main-box">
           <div className="admin-header">
             <h2>{name}</h2>
-            <div className="search-box-admin">
+            {/* <div className="search-box-admin">
               <MDBIcon fas icon="search" className="search-icon-admin" />
               <input type="text" placeholder="Search..." disabled />
-            </div>
+            </div> */}
             <div
               href=""
               className="d-flex flex-column justify-content-center align-items-center"
@@ -91,6 +93,7 @@ export default function Dashboard() {
               {isProducts && <ProductsAdmin value={isProducts} />}
               {isAddProducts && <AddProductAdmin />}
               {isEditProducts && <EditProductAdmin />}
+              {isUserDetails && <UserDetailsAdmin />}
             </>
           )}
         </div>

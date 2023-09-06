@@ -3,9 +3,9 @@ import { MDBIcon } from "mdb-react-ui-kit";
 import { PetContext } from "../App";
 
 export default function HomeDashboard() {
-  const { productDetails, profile } = useContext(PetContext);
-  const reversedData = [...productDetails].reverse().slice(0, 4);
-  const reversedProfile = [...profile].reverse().slice(0, 4);
+  const { productDetails, profile, handlePrice } = useContext(PetContext);
+  const reversedData = [...productDetails].reverse();
+  const reversedProfile = [...profile].reverse();
   const finalProfile = reversedProfile.filter((user) => user.role !== "admin");
 
   const totalSum = profile.reduce((sum, user) => {
@@ -17,13 +17,13 @@ export default function HomeDashboard() {
     }
     return sum;
   }, 0);
-  
+
   return (
     <div>
       <div className="d-flex justify-content-center align-items-center gap-5 mb-5">
         <div className="content-box">
           <h6>Total Orders</h6>
-          <h2>₹{totalSum}</h2>
+          <h2>{handlePrice(totalSum)}</h2>
           <p className="text-success">
             <MDBIcon fas icon="chart-line" className="me-2" />
             {Math.round(Math.random() * 100) / 10}%{" "}
@@ -51,8 +51,8 @@ export default function HomeDashboard() {
           </p>
         </div>
       </div>
-      <div className="d-flex justify-content-center">
-        <div className="dashboard-table ps-5">
+      <div className="dashboard-recent d-flex justify-content-center">
+        <div className="dashboard-table recent-admin ps-5">
           <h4>New Products</h4>
           <table>
             <thead>
@@ -69,13 +69,13 @@ export default function HomeDashboard() {
                   <th>{product.id}</th>
                   <th className="text-center">{product.category}</th>
                   <th>{product.name.slice(0, 14)}</th>
-                  <th>₹{product.price}</th>
+                  <th>{handlePrice(product.price)}</th>
                 </tr>
               </tbody>
             ))}
           </table>
         </div>
-        <div className="dashboard-table ps-5">
+        <div className="dashboard-table recent-admin ps-5">
           <h4>Recent Users</h4>
           <table>
             <thead>

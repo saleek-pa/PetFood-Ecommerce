@@ -9,6 +9,8 @@ export default function Details() {
   const { id } = useParams();
   const { productDetails, loginStatus, cart, setCart } = useContext(PetContext);
 
+  const product = productDetails.find((item) => item.id === parseInt(id));
+
   const addToCart = (newItem) => {
     let itemExists = cart.filter((item) => item.id === newItem.id);
 
@@ -21,14 +23,14 @@ export default function Details() {
     <>
       <div className="details d-flex flex-column flex-md-row align-items-center pb-3">
         <div className="w-100 w-md-50 d-flex justify-content-center align-items-center">
-          <img src={productDetails[id - 1].src} alt="Product-img" />
+          <img src={product.src} alt="Product-img" />
         </div>
         <div className="d-flex flex-column w-100 w-md-50 text-black me-5 ms-5">
-          <h1 className="fw-bold mb-3">{productDetails[id].name}</h1>
-          <h4 className="fw-bold mb-3">₹{productDetails[id].price}</h4>
+          <h1 className="fw-bold mb-3">{product.name}</h1>
+          <h4 className="fw-bold mb-3">₹{product.price}</h4>
           <hr />
           <p className="mt-3 text-muted mb-4">
-            {productDetails[id].description}
+            {product.description}
           </p>
           <div className="d-flex align-items-center gap-3">
             <div>
@@ -38,7 +40,7 @@ export default function Details() {
                 className="det-button"
                 onClick={() => {
                   if (loginStatus) {
-                    addToCart(productDetails[id - 1]);
+                    addToCart(product);
                   } else {
                     alert("Sign in to your account");
                   }
