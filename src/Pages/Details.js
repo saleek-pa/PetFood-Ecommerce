@@ -9,12 +9,16 @@ export default function Details() {
   const { id } = useParams();
   const { productDetails, loginStatus, cart, setCart } = useContext(PetContext);
 
+  // Find the product with the matching ID
   const product = productDetails.find((item) => item.id === parseInt(id));
 
+  // Function to add the current product to the cart
   const addToCart = (newItem) => {
+    // Check if the item is already in the cart
     let itemExists = cart.filter((item) => item.id === newItem.id);
 
     if (itemExists.length === 0) {
+      // If not, add it to the cart
       setCart([...cart, newItem]);
     }
   };
@@ -29,9 +33,7 @@ export default function Details() {
           <h1 className="fw-bold mb-3">{product.name}</h1>
           <h4 className="fw-bold mb-3">₹{product.price}</h4>
           <hr />
-          <p className="mt-3 text-muted mb-4">
-            {product.description}
-          </p>
+          <p className="mt-3 text-muted mb-4">{product.description}</p>
           <div className="d-flex align-items-center gap-3">
             <div>
               <MDBBtn

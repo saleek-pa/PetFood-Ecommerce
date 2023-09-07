@@ -20,11 +20,13 @@ export default function Cart() {
   const { cart, setCart, profile, setProfile, name, orderId, setOrderId } =
     useContext(PetContext);
 
+  // Calculate the total price of items in the cart
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
+  // Handle changes in item quantity
   const handleQuantity = (id, quantityChange) => {
     const newCart = cart.map((data) => {
       if (data.id === id && data.quantity > 0) {
@@ -35,10 +37,12 @@ export default function Cart() {
     setCart(newCart);
   };
 
+  // Remove an item from the cart
   const removeFromCart = (productId) => {
     setCart(cart.filter((item) => item.id !== productId));
   };
 
+  // Handle the checkout process
   const handleCheckout = (e) => {
     e.preventDefault();
 
@@ -50,10 +54,8 @@ export default function Cart() {
         price: item.price,
       }));
       setOrderId(orderId + 1);
-      console.log(orderId);
-      console.log(newOrderItem);
-      console.log(newOrderItem.length);
 
+      // Update user's profile with new orders
       const updatedProfile = profile.map((user) => {
         if (user.name === name) {
           return {

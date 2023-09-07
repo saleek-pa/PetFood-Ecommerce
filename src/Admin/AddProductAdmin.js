@@ -14,6 +14,7 @@ export default function AddProductAdmin() {
   const { productDetails, setProductDetails, productId, setProductId } =
     useContext(PetContext);
 
+  // Function to add new product to ProductDetails Array
   const handleForm = (e) => {
     e.preventDefault();
 
@@ -26,6 +27,7 @@ export default function AddProductAdmin() {
       price: e.target.price.value,
       quantity: 1,
     };
+
     setProductDetails([...productDetails, newProduct]);
     navigate("/dashboard/products");
     setProductId(productId + 1);

@@ -11,23 +11,28 @@ import {
 
 export default function EditProductAdmin() {
   const { id } = useParams();
-
-  const { productDetails, setProductDetails } = useContext(PetContext);
-  const [imageStatus, setImageStatus] = useState(true);
-  const [imageURL, setimageURL] = useState("");
   const navigate = useNavigate();
 
+  const { productDetails, setProductDetails } = useContext(PetContext);
+
+  // State for image status and URL
+  const [imageStatus, setImageStatus] = useState(true);
+  const [imageURL, setimageURL] = useState("");
+
+  // Find the product to edit based on the ID
   const product = productDetails.find((item) => item.id === parseInt(id));
 
   const handleForm = (e) => {
     e.preventDefault();
 
+    // Extract form input values
     const Image = imageURL || e.target.imageURL.value;
     const Name = e.target.name.value;
     const Price = e.target.price.value;
     const Category = e.target.category.value;
     const Description = e.target.description.value;
 
+    // Update the product details with the edited information
     const editedDetails = productDetails.map((details) => {
       if (details.id === product.id) {
         return {
@@ -41,6 +46,7 @@ export default function EditProductAdmin() {
       }
       return details;
     });
+    // Set the updated product details
     setProductDetails(editedDetails);
     navigate("/dashboard/products");
   };

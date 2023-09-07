@@ -13,6 +13,8 @@ import UserDetailsAdmin from "./UserDetailsAdmin";
 export default function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Determine active dashboard sections based on the current URL
   const isDashboard = location.pathname.endsWith("/dashboard");
   const isUsers = location.pathname.endsWith("/users");
   const isProducts = location.pathname.endsWith("/products");

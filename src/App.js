@@ -17,7 +17,7 @@ export const PetContext = createContext();
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(true);
   const [name, setName] = useState("");
   const [productDetails, setProductDetails] = useState(ProductData);
   const [productId, setProductId] = useState(17);
@@ -170,11 +170,13 @@ function App() {
     },
   ]);
 
+  // Function to format a price (₹1,000, ₹10,000)
   const handlePrice = (price) => {
     const formattedPrice = Number(price).toLocaleString("en-IN");
     return "₹" + formattedPrice;
   };
 
+  // Check if the current route is within the dashboard
   const location = useLocation();
   const isDashboardRoute = location.pathname.startsWith("/dashboard");
 
@@ -199,6 +201,7 @@ function App() {
           setOrderId,
         }}
       >
+        {/* Navbar & Footer is common for every route except Dashboard */}
         {!isDashboardRoute && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />

@@ -4,10 +4,13 @@ import { PetContext } from "../App";
 
 export default function HomeDashboard() {
   const { productDetails, profile, handlePrice } = useContext(PetContext);
+
+  // Reverse product details and user profiles for display as recent
   const reversedData = [...productDetails].reverse();
   const reversedProfile = [...profile].reverse();
   const finalProfile = reversedProfile.filter((user) => user.role !== "admin");
 
+  // Calculate the total sum of orders across all users
   const totalSum = profile.reduce((sum, user) => {
     if (user.orders) {
       const orderTotal = user.orders.reduce((orderSum, order) => {

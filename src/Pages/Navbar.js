@@ -23,15 +23,18 @@ const Navbar = () => {
     useContext(PetContext);
   const navigate = useNavigate();
 
+  // Toggle search box visibility
   const toggleSearchBox = (e) => {
     e.preventDefault();
     setShowSearchBox(!showSearchBox);
   };
 
+  // Toggle mobile navbar
   const toggleNavbar = () => {
     setShowCollapse(!showCollapse);
   };
 
+  // Handle search input change
   const handleSearchChange = (event) => {
     const searchText = event.target.value;
     setSearchInput(searchText);

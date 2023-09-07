@@ -5,11 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductsAdmin() {
   const navigate = useNavigate();
-  const { productDetails, setProductDetails, handlePrice } = useContext(PetContext);
+  const { productDetails, setProductDetails, handlePrice } =
+    useContext(PetContext);
 
+  // Initialize state to filter products by category
   const [category, setCategory] = useState(productDetails);
   const [selectedOption, setSelectedOption] = useState("All");
 
+  // Use useEffect to filter products based on the selected category
   useEffect(() => {
     if (selectedOption === "All") {
       setCategory(productDetails);
@@ -20,6 +23,7 @@ export default function ProductsAdmin() {
     }
   }, [selectedOption, productDetails]);
 
+  // Handle product deletion
   const handleDelete = (productId) => {
     const filteredProductData = productDetails.filter(
       (product) => product.id !== productId

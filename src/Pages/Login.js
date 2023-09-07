@@ -8,6 +8,7 @@ function Login() {
   const { profile, setLoginStatus, setName } = useContext(PetContext);
   const navigate = useNavigate();
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -23,6 +24,7 @@ function Login() {
       );
 
       if (Account.length > 0) {
+        // Set login status to true and update the user's name
         setLoginStatus(true);
         setName(Account[0].name);
         if (Account[0].role === "admin") {
