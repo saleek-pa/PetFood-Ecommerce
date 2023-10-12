@@ -24,14 +24,14 @@ function Products() {
         </h1>
 
         <MDBContainer fluid className="my-5">
-          <MDBRow className="d-flex flex-wrap justify-content-center pb-0 ms-5 me-5 h-50">
+          <MDBRow className="best-seller d-flex flex-wrap justify-content-center mx-5">
             {slicedData.map(value => (
               <MDBCol
                 xl="3"
                 lg="4"
                 md="4"
                 sm="6"
-                className="mb-3"
+                className="mb-3 best-seller-image"
                 key={value.id}
                 onClick={() => navigate(`/products/${value.id}`)}
               >
@@ -42,8 +42,8 @@ function Products() {
                     alt="product-image"
                   />
                   <MDBCardBody>
-                    <div className="text-center">
-                      <MDBCardTitle className="fw-bold">
+                    <div className=" text-center">
+                      <MDBCardTitle className="best-seller-name fw-bold">
                         {value.name}
                       </MDBCardTitle>
                     </div>

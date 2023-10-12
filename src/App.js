@@ -17,7 +17,7 @@ export const PetContext = createContext();
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [loginStatus, setLoginStatus] = useState(true);
+  const [loginStatus, setLoginStatus] = useState(false);
   const [name, setName] = useState("");
   const [productDetails, setProductDetails] = useState(ProductData);
   const [productId, setProductId] = useState(17);

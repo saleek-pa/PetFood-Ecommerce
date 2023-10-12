@@ -9,7 +9,7 @@ const Categories = () => {
       <h1 className="mb-5 text-black fw-bolder">
         <span>Top</span> categories
       </h1>
-      <div className="row d-flex justify-content-center align-items-center gap-4 g-0 flex-wrap">
+      <div className="row d-flex justify-content-center align-items-center gap-3 g-0 flex-wrap">
         <div className="col" onClick={() => navigate("/cat-food")}>
           <img
             src="https://codewithsadee.github.io/kitter/assets/images/category-1.jpg"

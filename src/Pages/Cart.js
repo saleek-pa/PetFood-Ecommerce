@@ -103,11 +103,11 @@ export default function Cart() {
                             <MDBCardImage
                               src={item.src}
                               fluid
-                              className="rounded-3"
-                              alt="Cotton T-shirt"
+                              className="cart-image rounded-3"
+                              alt={item.name}
                             />
                           </MDBCol>
-                          <MDBCol md="3" lg="3" xl="3">
+                          <MDBCol md="3" lg="3" xl="3" className="cart-details">
                             <MDBTypography tag="h6" className="text-muted">
                               {item.category}
                             </MDBTypography>
@@ -119,7 +119,7 @@ export default function Cart() {
                             md="3"
                             lg="3"
                             xl="3"
-                            className="d-flex align-items-center justify-content-center"
+                            className="cart-quantity d-flex align-items-center justify-content-center"
                           >
                             <MDBBtn
                               color="link"
@@ -142,11 +142,11 @@ export default function Cart() {
                             </MDBBtn>
                           </MDBCol>
                           <MDBCol md="3" lg="2" xl="2" className="text-end">
-                            <MDBTypography tag="h6" className="mb-0">
+                            <MDBTypography tag="h6" className="cart-item-price emb-0">
                               ₹{item.price * item.quantity}
                             </MDBTypography>
                           </MDBCol>
-                          <MDBCol md="1" lg="1" xl="1" className="text-end">
+                          <MDBCol md="1" lg="1" xl="1" className="cart-delete text-end">
                             <span
                               href=""
                               className="text-muted"
@@ -158,7 +158,7 @@ export default function Cart() {
                               <MDBIcon fas icon="trash-alt" />
                             </span>
                           </MDBCol>
-                          <hr className="my-4" />
+                          <hr className="cart-line my-4" />
                         </MDBRow>
                       ))}
 

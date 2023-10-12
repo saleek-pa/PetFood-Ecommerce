@@ -22,14 +22,14 @@ export default function AllProducts() {
         </h1>
 
         <MDBContainer fluid className="my-5">
-          <MDBRow className="d-flex flex-wrap justify-content-center pb-0 ms-5 me-5 h-50">
+          <MDBRow className="best-seller d-flex flex-wrap justify-content-center pb-0 ms-5 me-5 h-50">
             {productDetails.map((value) => (
               <MDBCol
                 xl="3"
                 lg="4"
                 md="4"
                 sm="6"
-                className="mb-3"
+                className="best-seller-image mb-3"
                 key={value.id}
                 onClick={() => navigate(`/products/${value.id}`)}
               >
@@ -41,7 +41,7 @@ export default function AllProducts() {
                   />
                   <MDBCardBody>
                     <div className="text-center">
-                      <MDBCardTitle className="fw-bold">
+                      <MDBCardTitle className="best-seller-name fw-bold">
                         {value.name}
                       </MDBCardTitle>
                     </div>

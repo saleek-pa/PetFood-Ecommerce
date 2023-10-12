@@ -59,8 +59,13 @@
   }
 
   .categories img {
-    max-width: 200px;
-    height: 200px;
+    max-width: 82px;
+    height: 82px;
+  }
+
+  .categories p {
+    font-size: medium;
+    margin-top: 5px;
   }
 }
 

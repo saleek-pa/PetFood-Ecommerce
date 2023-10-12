@@ -74,3 +74,45 @@
     font-size: 12px;
   }
 }
+
+@media (max-width: 576px) {
+  .nav-color {
+    background-color: white;
+    height: 12vh;
+    transition: 0.3s;
+  }
+
+  .details img {
+    width: 250px;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .details h1 {
+    font-size: x-large;
+    padding: 0 25px;
+    margin-top: 20px;
+  }
+
+  .details h4 {
+    font-size: x-large;
+    padding: 0 25px;
+  }
+
+  .details p {
+    font-size: 15px;
+    padding: 0 25px;
+  }
+
+  .quantity {
+    width: 90px;
+  }
+
+  .det-button {
+    width: 150px;
+    height: 50px;
+    font-size: 12px;
+    left: 30%;
+    margin-bottom: 20px;
+  }
+}

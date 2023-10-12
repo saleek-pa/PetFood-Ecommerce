@@ -78,6 +78,7 @@ const Navbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/");
+                  setShowCollapse(!showCollapse);
                 }}
               >
                 Home
@@ -87,6 +88,7 @@ const Navbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/products");
+                  setShowCollapse(!showCollapse);
                 }}
               >
                 Products
@@ -96,6 +98,7 @@ const Navbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/cat-food");
+                  setShowCollapse(!showCollapse);
                 }}
                 className="nav-food"
               >
@@ -106,6 +109,7 @@ const Navbar = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/dog-food");
+                  setShowCollapse(!showCollapse);
                 }}
                 className="nav-food"
               >

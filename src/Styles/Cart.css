@@ -32,3 +32,31 @@
     border-bottom-right-radius: 16px;
   }
 }
+
+@media (max-width: 576px) {
+  .cart-image {
+    width: 120px;
+    transform: translateX(85px);
+  }
+
+  .cart-details {
+    width: 100%;
+  }
+
+  .cart-quantity {
+    padding-top: 10px;
+  }
+
+  .cart-item-price {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .cart-delete {
+    transform: translateY(-60px);
+  }
+
+  .cart-line {
+    margin: 0 !important;
+  }
+}
